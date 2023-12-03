@@ -17,5 +17,4 @@
 <img width="410" alt="difficult" src="https://github.com/ilhancuvelek/Catch_Buzz_Lightyear_Game/assets/75850897/60674245-f579-41b3-9edd-3f5c1ae9f69b">
 
 ## Time's Over
-<img width="410" alt="result" src="https://github.com/ilhancuvelek/Catch_Buzz_Lightyear_Game/assets/75850897/1116e988-0d90-4d97-a8a3-0c2f192a8718">
-
+<img width="405" alt="Screenshot 2023-12-03 at 11 28 28" src="https://github.com/ilhancuvelek/Catch_Buzz_Lightyear_Game/assets/75850897/188f34a5-fc65-42a3-9ab2-c849a298cd11">
