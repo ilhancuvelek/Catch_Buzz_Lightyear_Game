@@ -58,7 +58,7 @@ class EasyModeViewController: UIViewController {
         
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
-        buzzTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(buzzTimerFunction), userInfo: nil, repeats: true)
+        buzzTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(buzzTimerFunction), userInfo: nil, repeats: true)
     }
     
     @objc func buzzTimerFunction(){
@@ -79,8 +79,6 @@ class EasyModeViewController: UIViewController {
         counter-=1
         timeLabel.text="Time : \(counter)"
         
-        buzzTimerFunction()
-        
         if counter==0{
             timer.invalidate()
             showAlert(title: "Time's Over", message: yourScoreLabel.text!)
@@ -96,11 +94,28 @@ class EasyModeViewController: UIViewController {
     func showAlert(title:String,message:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let replayButton = UIAlertAction(title: "Replay?", style: .default, handler: { (UIAlertAction) in
+            self.replayAction()
+        })
         alert.addAction(okButton)
+        alert.addAction(replayButton)
         self.present(alert, animated: true, completion: nil)
     }
     @objc func buzzAction(){
         score+=1
         yourScoreLabel.text="Your Score : \(score)"
     }
+    @objc func replayAction() {
+        score = 0
+        counter = 20
+        yourScoreLabel.text = "Your Score : \(score)"
+
+        // Invalidate the existing timers before creating new ones
+        timer.invalidate()
+        buzzTimer.invalidate()
+
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
+        buzzTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(buzzTimerFunction), userInfo: nil, repeats: true)
+    }
+
 }
